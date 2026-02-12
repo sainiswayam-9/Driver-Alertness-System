@@ -136,6 +136,7 @@ Repeat
 ```bash
 git clone <https://github.com/sainiswayam-9/Driver-Alertness-System>
 cd Real-Time-Driver-Alertness-Detection-System
+```
 
 2️⃣ Create Virtual Environment (Recommended)
 
