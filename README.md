@@ -56,20 +56,26 @@ The **Real-Time Driver Drowsiness Detection System** is a computer vision–base
 ---
 
 ## 📂 Project Structure
-
+```
 Real-Time-Driver-Alertness-Detection-System/
 │
-├── final-integration.py # Main detection pipeline
-├── main_dlib.py # Dlib-based implementation
+├── final-integration.py          # Main detection pipeline
+├── main_dlib.py                  # Dlib-based implementation
 │
-├── shape_predictor_68_face_landmarks.dat # Facial landmark model
-├── alert-sound.mp3 # Drowsiness alert audio
+├── shape_predictor_68_face_landmarks.dat   # Facial landmark model
+├── alert-sound.mp3                         # Drowsiness alert audio
 │
-├── assets/ # Project snapshots
-├── wheels/ # Offline dlib wheels
+├── assets/                        # Project snapshots
+│   ├── normal_detection.png
+│   ├── yawn_detected.png
+│   └── drowsy_after_yawn.png
 │
-├── requirements.txt
-└── README.md
+├── wheels/                        # Offline Dlib wheels
+│   └── dlib-19.xx.xx-cp3xx-win_amd64.whl
+│
+├── requirements.txt               # Project dependencies
+└── README.md                      # Project documentation
+```
 
 ---
 
@@ -88,9 +94,9 @@ The system operates through the following pipeline:
 ## 📐 Eye Aspect Ratio (EAR)
 
 The Eye Aspect Ratio is defined as:
-
+```
 EAR = (||p2 − p6|| + ||p3 − p5||) / (2 ||p1 − p4||)
-
+```
 Where:
 
 - `p1, p4` → Horizontal eye landmark points  
@@ -106,7 +112,7 @@ Where:
 ---
 
 ## 🔁 System Flow Diagram
-
+```
 Start
 ↓
 Initialize Camera
@@ -126,7 +132,7 @@ Is EAR < Threshold?
 Display Frame
 ↓
 Repeat
-
+```
 ---
 
 ## ⚙️ Installation Guide (Cross-Platform)
@@ -141,48 +147,53 @@ cd Real-Time-Driver-Alertness-Detection-System
 2️⃣ Create Virtual Environment (Recommended)
 
 Windows
-    python -m venv venv
-    venv\Scripts\activate
-
+```bash
+python -m venv venv
+venv\Scripts\activate
+```
 macOS / Linux
-    python3 -m venv venv
-    source venv/bin/activate
-
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
 3️⃣ Install Dependencies
-
+```bash
 pip install -r requirements.txt
-
+```
 4️⃣ Install dlib (If Automatic Install Fails)
 
 🔹 Option A – Install via CMake
-    pip install cmake
-    pip install dlib
-
+```bash
+pip install cmake
+pip install dlib
+```
 🔹 Option B – Install Precompiled Wheel (Windows)
     Wheel files are available inside the wheels/ directory.
 
     Check your Python version:
-        python --version
-
+    ```bash
+    python --version   
+    ```
     Install matching wheel (example for Python 3.10):
-        pip install wheels/dlib-19.xx.xx-cp310-cp310-win_amd64.whl
-
+    ```bash
+    pip install wheels/dlib-19.xx.xx-cp310-cp310-win_amd64.whl
+    ```
     ⚠ Ensure:
-        Python version matches wheel version
-        64-bit Python is installed
+    - Python version matches wheel version
+    - 64-bit Python is installed
 
 5️⃣ Download Landmark Model
 
-Download: shape_predictor_68_face_landmarks.dat
+- Download: shape_predictor_68_face_landmarks.dat
 
-From: http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2
+- From: http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2
 
-Extract and place the .dat file in the project root directory.
+- Extract and place the .dat file in the project root directory.
 
 6️⃣ Run the Application
-
+```bash
 python final-integration.py
-
+```
 ---
 
 ## 🚨 Limitations of Current Experimental Version
